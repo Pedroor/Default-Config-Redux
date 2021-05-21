@@ -1,24 +1,15 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import api from '../services/api';
+import React from 'react';
+import { Text, View } from 'react-native';
+import { useSelector } from 'react-redux';
 import { IState } from '../store';
-import { addProductToCart } from '../store/modules/cart/action';
-import { ICartItem, IProduct } from '../store/modules/cart/types';
+
+import { ICartItem } from '../store/modules/cart/types';
 
 // import { Container } from './styles';
 
 export function Cart() {
-  const dispatch = useDispatch();
   const cart = useSelector<IState, ICartItem[]>(state => state.cart.items);
-
-  const handleAddProductToCart = useCallback(
-    (product: IProduct) => {
-      dispatch(addProductToCart(product));
-    },
-    [dispatch],
-  );
-
+  console.log('CART', cart);
   return (
     <View>
       <View

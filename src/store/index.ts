@@ -1,13 +1,19 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, Middleware } from 'redux';
 import { ICartState } from './modules/cart/types';
-import reactotron from '../../ReactotronConfig';
-import devToolsEnhancer from 'remote-redux-devtools';
 import rootReducer from './modules/rootReducer';
+import rootSaga from './modules/rootSaga';
+
+import createSagaMiddleware from 'redux-saga';
 
 export interface IState {
   cart: ICartState;
 }
 
-const store = createStore(rootReducer, reactotron.createEnhancer());
+const sagaMiddleware = createSagaMiddleware();
 
+const middlewares = [sagaMiddleware];
+
+const store = createStore(rootReducer, applyMiddleware(...middlewares));
+
+sagaMiddleware.run(rootSaga);
 export default store;
