@@ -1,14 +1,30 @@
-/**
- * @format
- */
-
-import 'react-native';
 import React from 'react';
+
+import { render } from '@testing-library/react-native';
 import App from '../App';
+import CatalogItem from '../src/components/CatalogItem';
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+describe('Render successfully', () => {
+  it('renders App successfully', () => {
+    const { toJSON } = render(<App />);
 
-it('renders correctly', () => {
-  renderer.create(<App />);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('renders login button successfully', async () => {
+    const { getByText } = render(
+      <CatalogItem
+        product={{
+          id: 3,
+          title: 'Tênis da moda',
+          price: 500.0,
+          hasProductOnStock: false,
+        }}
+      />,
+    );
+
+    const button = await getByText('Adicionar');
+
+    expect(button).toBeTruthy();
+  });
 });

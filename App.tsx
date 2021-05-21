@@ -6,9 +6,6 @@ import { Cart } from './src/components/Cart';
 import store from './src/store';
 
 const App = () => {
-  if (__DEV__) {
-    require('react-devtools');
-  }
   return (
     <Provider store={store}>
       <SafeAreaView style={styles.container}>

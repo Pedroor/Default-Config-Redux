@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render successfully renders App successfully 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text>
+    OLA MUNDO
+  </Text>
+  <View />
+  <View>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "paddingLeft": 40,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "paddingLeft": 15,
+          }
+        }
+      >
+        PRODUTO
+      </Text>
+      <Text
+        style={
+          Object {
+            "paddingLeft": 15,
+          }
+        }
+      >
+        PREÇO
+      </Text>
+      <Text
+        style={
+          Object {
+            "paddingLeft": 15,
+          }
+        }
+      >
+        QUANTIDADE
+      </Text>
+      <Text
+        style={
+          Object {
+            "paddingLeft": 15,
+          }
+        }
+      >
+        SUBTOTAL
+      </Text>
+    </View>
+  </View>
+</RCTSafeAreaView>
+`;
