@@ -10,26 +10,26 @@ interface CatalogItemProps {
   product: IProduct;
 }
 
-function CatalogItem() {
-  // const dispatch = useDispatch();
+function CatalogItem({ product }: CatalogItemProps) {
+  const dispatch = useDispatch();
 
-  // const hasFailedStockCheck = useSelector<IState, boolean>(state => {
-  //   return state.cart.failedStockCheck.includes(product.id);
-  // });
+  const hasFailedStockCheck = useSelector<IState, boolean>(state => {
+    return state.cart.failedStockCheck.includes(product.id);
+  });
 
-  // const handleAddProductToCart = useCallback(
-  //   (product: IProduct) => {
-  //     dispatch(addProductToCartRequest(product));
-  //   },
-  //   [dispatch],
-  // );
+  const handleAddProductToCart = useCallback(
+    (product: IProduct) => {
+      dispatch(addProductToCartRequest(product));
+    },
+    [dispatch],
+  );
 
   return (
     <View style={{ marginTop: 15 }}>
-      {/* <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
         <Text style={{ paddingRight: 50 }}>{product.title}</Text>
         <Text>{product.price}</Text>
-      </View> */}
+      </View>
       <View
         style={{
           justifyContent: 'center',
@@ -38,14 +38,13 @@ function CatalogItem() {
         }}>
         <TouchableOpacity
           style={{ width: '70%', height: 35, backgroundColor: 'green' }}
-          // onPress={() => handleAddProductToCart(product)}
-        >
+          onPress={() => handleAddProductToCart(product)}>
           <Text style={{ textAlign: 'center' }}>Adicionar</Text>
         </TouchableOpacity>
 
-        {/* {hasFailedStockCheck && (
+        {hasFailedStockCheck && (
           <Text style={{ color: 'red' }}>PRODUTO FORA DE ESTOQUE</Text>
-        )} */}
+        )}
       </View>
     </View>
   );
