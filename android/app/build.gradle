@@ -1,5 +1,6 @@
 apply plugin: "com.android.application"
 
+
 import com.android.build.OutputFile
 
 /**
@@ -156,6 +157,10 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            aplicationIdSuffix ".debug"
+            resValue "string", "app_name", "Debug - NativeModulePresentation"
+            buildConfigField('String', 'ENV', '"debug"')
+            buildConfigField('String', 'BASE_URL', '"https://swapi.dev/api/"')
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
@@ -163,6 +168,9 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            resValue "string", "app_name", "NativeModulePresentation"
+            buildConfigField('String', 'ENV', '"release"')
+            buildConfigField('String', 'BASE_URL', '"https://swapi/api/"')
         }
     }
 
